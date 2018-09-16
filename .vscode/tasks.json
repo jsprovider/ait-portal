@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Ait.UnitsCloud.PortalApi/Ait.UnitsCloud.PortalApi.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
