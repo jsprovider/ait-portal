@@ -3,17 +3,21 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Ait-UnitsCloud-PortalSPA": {
+    "ait-unitscloud-portalSpa": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Ait-UnitsCloud-PortalSPA",
+            "outputPath": "dist/ait-unitscloud-portalSpa",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,7 +27,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -43,25 +48,32 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Ait-UnitsCloud-PortalSPA:build"
+            "browserTarget": "ait-unitscloud-portalSpa:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Ait-UnitsCloud-PortalSPA:build:production"
+              "browserTarget": "ait-unitscloud-portalSpa:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Ait-UnitsCloud-PortalSPA:build"
+            "browserTarget": "ait-unitscloud-portalSpa:build"
           }
         },
         "test": {
@@ -72,7 +84,8 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -95,19 +108,20 @@
         }
       }
     },
-    "Ait-UnitsCloud-PortalSPA-e2e": {
+    "ait-unitscloud-portalSpa-e2e": {
       "root": "e2e/",
       "projectType": "application",
+      "prefix": "",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Ait-UnitsCloud-PortalSPA:serve"
+            "devServerTarget": "ait-unitscloud-portalSpa:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Ait-UnitsCloud-PortalSPA:serve:production"
+              "devServerTarget": "ait-unitscloud-portalSpa:serve:production"
             }
           }
         },
@@ -123,5 +137,5 @@
       }
     }
   },
-  "defaultProject": "Ait-UnitsCloud-PortalSPA"
+  "defaultProject": "ait-unitscloud-portalSpa"
 }

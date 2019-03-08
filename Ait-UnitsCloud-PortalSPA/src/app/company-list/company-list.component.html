@@ -1,0 +1,33 @@
+<!-- testing -->
+
+
+<!-- <div *ngFor=" let company of companyList">
+  <div> company.companyName</div> -->
+
+  <div class="mat-elevation-z8">
+    <table mat-table class="full-width-table" [dataSource]="datasource" matSort aria-label="Elements">
+      <!-- Id Column -->
+      <ng-container matColumnDef="companyName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Comapny Name</th>
+        <td mat-cell *matCellDef="let row">{{row.companyName}}</td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Code</th>
+        <td mat-cell *matCellDef="let row">{{row.code}}</td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <!-- <mat-paginator #paginator
+        [length]="companyList.data.length"
+        [pageIndex]="0"
+        [pageSize]="50"
+        [pageSizeOptions]="[25, 50, 100, 250]">
+    </mat-paginator> -->
+  </div>
+
+

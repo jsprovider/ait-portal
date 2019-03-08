@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Ait.UnitsCloud.PortalApi.Models;
+using Ait.UnitsCloud.PortalApi.Data.Models;
+using Ait.UnitsCloud.PortalApi.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ait.UnitsCloud.PortalApi.Controllers
@@ -11,18 +12,21 @@ namespace Ait.UnitsCloud.PortalApi.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        PortalContext _ctx = null;
-        public ValuesController(PortalContext ctx)
+        //PortalContext _ctx = null;
+        IPortalUnitOfWork _portalUnitOfWork = null;
+        public ValuesController(IPortalUnitOfWork  poralUnitOfWork)
         {
-            _ctx = ctx;
+            _portalUnitOfWork = poralUnitOfWork;
         }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<object>> Get()
         {
-            return _ctx.Company.Select(r=> new{
+            //CompanyRepository rep = new CompanyRepository( ()=>  new PortalContext());
+
+            return _portalUnitOfWork.CompanyRepository.GetAll().Select(r=> new{
                 CompanyName = r.Name1,
-                Status = r.Code 
+                Code = r.Code 
             }).ToList();
         }
 
